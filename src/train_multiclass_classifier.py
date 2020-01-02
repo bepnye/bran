@@ -420,13 +420,15 @@ def main(argv):
                                                           negative_test_batcher, string_int_maps)
                 if positive_test_test_batcher and negative_test_test_batcher:
                     if FLAGS.export_file != '':
-                        export_predictions(sess, model, FLAGS, positive_test_test_batcher, negative_test_test_batcher,
+                        export_relations(sess, model, FLAGS, positive_test_test_batcher, negative_test_test_batcher,
                                            string_int_maps, FLAGS.export_file, threshold_map=threshold_map)
                     else:
                         results, _, _ = relation_eval(sess, model, FLAGS, positive_test_test_batcher,
                                                       negative_test_test_batcher, string_int_maps, threshold_map=threshold_map)
                 if ner_test_batcher:
                     ner_eval(ner_test_batcher, sess, model, FLAGS, string_int_maps)
+                    if FLAGS.export_file != '':
+                        export_ner(sess, model, FLAGS, ner_test_batcher, string_int_maps, FLAGS.export_file)
                 print (results)
             elif FLAGS.mode == 'export' and FLAGS.export_file != '':
                 print('Exporting predictions')
@@ -482,7 +484,7 @@ if __name__ == '__main__':
     tf.app.flags.DEFINE_string('label_weights', '', 'weight examples for unbalanced labels')
     tf.app.flags.DEFINE_string('logdir', '', 'save logs and models to this dir')
     tf.app.flags.DEFINE_string('load_model', '', 'path to saved model to load')
-    tf.app.flags.DEFINE_string('save_model', '', 'name of file to serialize model to')
+    tf.app.flags.DEFINE_string('save_model', 'default_model', 'name of file to serialize model to')
     tf.app.flags.DEFINE_string('optimizer', 'adam', 'optimizer to use')
     tf.app.flags.DEFINE_string('loss_type', 'softmax', 'optimizer to use')
     tf.app.flags.DEFINE_string('model_type', 'd', 'optimizer to use')

@@ -81,7 +81,7 @@ def make_example(entity_map, ep_map, rel_map, token_map, line, writer):
     parts = line.strip().split('\t')
     if FLAGS.tsv_format:
         if len(parts) != 13:
-            print('\nIncorrect number of fields in line: %s ' % line)
+            print('\nIncorrect number of fields [%d != 13] in line: %s... ' % (len(parts), line[:20]))
             return 0
         e1_str, e1_type, e1_mention_str, e1_s_str, e1_e_str, \
         e2_str, e2_type, e2_mention_str, e2_s_str, e2_e_str, \
@@ -182,7 +182,7 @@ def make_example_all_mentions(entity_map, ep_map, rel_map, token_map, line, writ
     parts = line.strip().split('\t')
     if FLAGS.tsv_format:
         if len(parts) != 13:
-            print('\nIncorrect number of fields in line: %s ' % line)
+            print('\nIncorrect number of fields [%d != 13] in line: %s... ' % (len(parts), line[:20]))
             return 0
         e1_str, e1_type, e1_mention_str, e1_s_str, e1_e_str, \
         e2_str, e2_type, e2_mention_str, e2_s_str, e2_e_str, \
