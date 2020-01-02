@@ -1,0 +1,72 @@
+export MODEL_NAME='cre/cre_test'
+export train=${CDR_IE_ROOT}/src/train_multiclass_classifier.py
+
+train_root=${CDR_IE_ROOT}/data/cre/train/protos
+export vocab_dir=${train_root}
+
+data_root=${CDR_IE_ROOT}/data/cre/evaluate/protos
+export positive_train=${data_root}/negative_CRE_dev.txt.proto
+export negative_train=${data_root}/negative_CRE_dev.txt.proto
+export positive_test=${data_root}/negative_CRE_dev.txt.proto
+export negative_test=${data_root}/negative_CRE_dev.txt.proto
+export positive_test_test=${data_root}/negative_CRE_dev.txt.proto
+export negative_test_test=${data_root}/negative_CRE_dev.txt.proto
+
+export ner_train=${data_root}/ner_CRE_dev.txt.proto
+export ner_test=${data_root}/ner_CRE_dev.txt.proto
+export ner_prob=0.5
+export ner_weight=20.0
+
+export logdir=$LOG_DIR
+export optimizer=adam
+export model_type=classifier
+export embeddings=${CDR_IE_ROOT}/data/embeddings/just_train_2500_64d
+
+export bidirectional=True
+export in_memory=True
+export text_encoder=transformer_cnn_all_pairs
+export num_classes=4
+export kb_vocab_size=2
+export block_repeats=2
+
+export lr=.0005
+export margin=1.0
+export l2_weight=0
+export clip_norm=10
+export dropout_loss_weight=0
+
+export text_weight=1.0
+export text_prob=1.0
+
+export word_unk_dropout=0.85
+export word_dropout=.5
+export lstm_dropout=.95
+export final_dropout=.35
+
+export epsilon=1e-4
+export beta1=.1
+export beta2=.9
+export noise_std=0.1
+
+export text_batch=16
+export kb_batch=16
+export ner_batch=16
+
+export token_dim=64
+export lstm_dim=64
+export embed_dim=64
+export position_dim=0
+
+export pos_noise=.33
+export neg_noise=.20
+# export percentile=True
+
+export kb_pretrain=0
+export kb_epochs=100000
+export text_epochs=100000
+export eval_every=15000
+export max_seq=2000
+export neg_samples=200
+export random_seed=1111
+
+# saved_models/cre/cre_test/\*/.0005_16_32_10_0.5_1.0_1.0_0_0_1.0_64_0_0_0_1.0_.85_.5_.95_.35_1e-4_.1_.9_25000_.1_0_.5_2_\*/train.log
